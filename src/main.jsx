@@ -7,7 +7,7 @@ import Home from './Components/Home/Home.jsx'
 import About from './Components/About/About.jsx'
 import Contact from './Components/Contact.jsx/Contact.jsx'
 import User from './Components/User/User.jsx'
-import GitHub from './Components/Github/GitHub.jsx'
+import GitHub, { apiLoader } from './Components/Github/GitHub.jsx'
 
 // const router = createBrowserRouter([
 //   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='about' element={<About/>} />
     <Route path='contact' element={<Contact/>} />
     <Route path='user/:userId' element={<User/>} />
-    <Route path='github' element={<GitHub/>} />
+    <Route loader={apiLoader} path='github' element={<GitHub/>} />
   </Route>
 ))
 ReactDOM.createRoot(document.getElementById('root')).render(

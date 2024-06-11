@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
 
 
 const GitHub = () => {
 
-    const [gitData , setGitData] = useState([]);
+    // const [gitData , setGitData] = useState([]);
      
-    useState(() => {
-        const api = async () => {
-           const response = await fetch('https://api.github.com/users/tousiqkashif');
-           const resData = await response.json();
-           setGitData(resData);
-        }
-        api();
+    // useState(() => {
+    //     const api = async () => {
+    //        const response = await fetch('https://api.github.com/users/tousiqkashif');
+    //        const resData = await response.json();
+    //        setGitData(resData);
+    //     }
+    //     api();
         
-    } ,[]);
+    // } ,[]);
+
+    const gitData = useLoaderData();
 
   return (
     <div className='bg-slate-600 flex justify-around'>
@@ -29,3 +32,11 @@ const GitHub = () => {
 }
 
 export default GitHub
+
+// i am using loader in router browser for optimize load speed
+
+export const apiLoader = async () => {
+
+  const response = await fetch('https://api.github.com/users/tousiqkashif');
+  return response.json(); 
+}
